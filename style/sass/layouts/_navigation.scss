@@ -1,0 +1,51 @@
+header {
+    width: auto;
+    height: 50px;
+    right: 2.5rem;
+    top: 2.5rem;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: black;
+    padding: 0 5rem;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+    border: 1px solid transparent;
+    .authentication {
+        position: fixed;
+        top: 2.5rem;
+        left: 2.5rem;
+        color: black;
+        background: white;
+        border: 1px solid black;
+        padding: 1rem;
+        z-index: 10;
+        p {
+            font-size: 1.5rem;
+            &:first-child{
+                margin-bottom: 1.5rem;
+            }
+            &:last-child{
+                color: blue;
+            }
+        }
+    }
+    nav ul {
+        display: flex;
+        gap: 2rem;
+    }
+    a {
+        color: white;
+        transition: 0.3s ease-in-out;
+        font-size: 1.5rem;
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
+
+.active {
+    color: red;
+}

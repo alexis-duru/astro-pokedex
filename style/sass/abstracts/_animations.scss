@@ -1,0 +1,91 @@
+.catched {
+    animation: fadeText 2s ease-in-out;
+    position: absolute;
+    bottom: 10rem;
+    color: green;
+    @keyframes fadeText {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}
+
+.catched__item {
+    color: green;
+    animation: fadeImg 0.3s ease-in-out both;
+    @keyframes fadeImg {
+        0% {
+            transform: scaleY(1);
+        }
+        50% {
+            transform: scaleX(0.5);
+        }
+        100% {
+            transform: scaleY(0);
+        }
+    }
+}
+
+.notification-validate {
+    animation: fadeText 3.2s ease-in-out both;
+    position: absolute;
+    top: 10rem;
+    background-color: green;
+    color: white;
+    border-radius: 50px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    width: auto;
+    white-space: nowrap;
+    right: 10rem;
+    @keyframes fadeText {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}
+
+.notification-error {
+    animation: fadeText 3.2s ease-in-out both;
+    position: absolute;
+    top: 10rem;
+    background-color: red;
+    color: white;
+    border-radius: 50px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    width: auto;
+    white-space: nowrap;
+    right: 10rem;
+    @keyframes fadeText {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}

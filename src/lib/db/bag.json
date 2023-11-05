@@ -1,0 +1,110 @@
+[
+  {
+    "id": 101,
+    "uuid": 982141,
+    "name": "electrode",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png"
+  },
+  {
+    "id": 11,
+    "uuid": 654530,
+    "name": "metapod",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
+  },
+  {
+    "id": 100,
+    "uuid": 545030,
+    "name": "voltorb",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png"
+  },
+  {
+    "id": 130,
+    "uuid": 82484,
+    "name": "gyarados",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png"
+  },
+  {
+    "id": 14,
+    "uuid": 845912,
+    "name": "kakuna",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png"
+  },
+  {
+    "id": 1,
+    "uuid": 362890,
+    "name": "bulbasaur",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+  },
+  {
+    "id": 45,
+    "uuid": 967461,
+    "name": "vileplume",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png"
+  },
+  {
+    "id": 76,
+    "uuid": 712126,
+    "name": "golem",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png"
+  },
+  {
+    "id": 64,
+    "uuid": 935254,
+    "name": "kadabra",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png"
+  },
+  {
+    "id": 27,
+    "uuid": 41745,
+    "name": "sandshrew",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"
+  },
+  {
+    "id": 1,
+    "uuid": 957948,
+    "name": "bulbasaur",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+  },
+  {
+    "id": 35,
+    "uuid": 958309,
+    "name": "clefairy",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
+  },
+  {
+    "id": 110,
+    "uuid": 610110,
+    "name": "weezing",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png"
+  },
+  {
+    "id": 62,
+    "uuid": 902340,
+    "name": "poliwrath",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/62.png"
+  },
+  {
+    "id": 35,
+    "uuid": 169678,
+    "name": "clefairy",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
+  },
+  {
+    "id": 126,
+    "uuid": 81850,
+    "name": "magmar",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/126.png"
+  },
+  {
+    "id": 1,
+    "uuid": 643292,
+    "name": "bulbasaur",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+  },
+  {
+    "id": 148,
+    "uuid": 870103,
+    "name": "dragonair",
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png"
+  }
+]
