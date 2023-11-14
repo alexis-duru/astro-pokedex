@@ -22,11 +22,11 @@
         cursor: pointer;
         opacity: 1;
         flex-wrap: wrap;
-        width: 100%;
+        width: auto;
         height: auto;
         .item {
             width: auto;
-            height: 100%;
+            height: auto;
             margin: 1rem;
             display: flex;
             align-items: center;
