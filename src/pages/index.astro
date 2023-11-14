@@ -1,24 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../../style/sass/globals.scss";
-// import fs from "fs";
-import pokemons from "../../src/lib/db/pokemons.json";
-import users from "../../src/lib/db/user.json";
+import pokemons from "../lib/db/pokemons.json";
 
-export const load = async () => {
-  return {
-    props: {
-      pokemons,
-      users,
-    },
-  };
-};
-
-let interval = null;
-let pokemon = pokemons;
+let pokemon = [...pokemons];
 let capturedPokemon = [];
+let interval = null;
 
-function shuffleArray(array: any) {
+function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -36,121 +25,21 @@ function setRandomPosition() {
   return { top: `${randomTop}px`, left: `${randomLeft}px` };
 }
 
-// créer une fonction avec un setInterval de 2000ms
-// dans cette fonction, on va appeler la fonction shuffleArray
-// on va slice le tableau pour récupérer le premier élément
-// on va appeler la fonction setRandomPosition
-// on va récupérer le container
-// on va modifier le style du container avec les valeurs de la fonction setRandomPosition
-
-const startInterval = () => {
+function onLoad() {
   interval = setInterval(() => {
-    pokemon = shuffleArray(pokemon);
+    pokemon = shuffleArray([...pokemons]);
     capturedPokemon = pokemon.slice(0, 1);
     const randomPosition = setRandomPosition();
-    const randomContainer =
-      document.querySelector<HTMLElement>(".random__container");
-    randomContainer.style.top = randomPosition.top;
-    randomContainer.style.left = randomPosition.left;
+    const randomContainer = document.querySelector(
+      ".random__container"
+    ) as HTMLElement; // Assertion de type
+
+    if (randomContainer) {
+      randomContainer.style.top = randomPosition.top;
+      randomContainer.style.left = randomPosition.left;
+    }
   }, 2000);
-};
-
-const stopInterval = () => {
-  clearInterval(interval);
-};
-
-export const mount = () => {
-  startInterval();
-};
-
-export const unmount = () => {
-  stopInterval();
-};
-
-const handleClick = async () => {
-  const { id, name } = capturedPokemon[0];
-
-  const uuid = Math.floor(Math.random() * 1000000);
-
-  const pokemon = {
-    id: id,
-    uuid: uuid,
-    name,
-    image: capturedPokemon[0].sprites.front_default,
-  };
-
-  try {
-    const response = await fetch("/api/bag", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(pokemon),
-    });
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
-    const response = await fetch("/api/seen", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(pokemon),
-    });
-  } catch (error) {
-    console.log(error);
-  }
-
-  const homeSection = document.querySelector(".home");
-  const div = document.createElement("div");
-  div.classList.add("catched");
-  div.innerHTML = `<p>${pokemon.name} attrapé !</p>`;
-  homeSection.appendChild(div);
-
-  const img = document.querySelector(".item");
-  img.classList.add("catched__item");
-
-  if (window.location.pathname === "/") {
-    setTimeout(() => {
-      const catched = document.querySelector(".catched");
-      if (catched) {
-        catched.remove();
-      }
-    }, 2000);
-  }
-
-  const randomItem = document.querySelectorAll(".random__item");
-  randomItem.forEach((item) => {
-    item.addEventListener("click", () => handleClick());
-  });
-};
-
-// export const _saveData = async (data: any, filePath: any) => {
-//   try {
-//     let existingData = [];
-//     try {
-//       const rawData = await fs.promises.readFile(filePath, "utf-8");
-//       existingData = JSON.parse(rawData);
-//       if (!Array.isArray(existingData)) {
-//         existingData = [];
-//       }
-//     } catch (readError) {
-//       console.log("Le fichier", filePath, "n'existe pas. Il va être créé.");
-//     }
-//     existingData.push(data);
-//     await fs.promises.writeFile(
-//       filePath,
-//       JSON.stringify(existingData, null, 2),
-//       "utf-8"
-//     );
-//     console.log("Les données ont été enregistrées avec succès dans", filePath);
-//   } catch (error) {
-//     console.error("Erreur lors de l'enregistrement des données :", error);
-//     throw error;
-//   }
-// };
+}
 ---
 
 <Layout title="Welcome to Astro.">
@@ -158,13 +47,9 @@ const handleClick = async () => {
     <div class="random__container">
       {
         pokemon.map((pokemon) => (
-          <div class="random__item">
+          <div class="item">
             <p>{pokemon.name}</p>
-            <img
-              class="item"
-              src={pokemon.sprites.front_default}
-              alt={pokemon.name}
-            />
+            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
           </div>
         ))
       }

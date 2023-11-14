@@ -1,6 +1,33 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import "../../style/sass/globals.scss";
+import "../../../style/sass/globals.scss";
+
+import pokemons from "../../lib/db/pokemons.json";
+let bagData = [];
+
+try {
+  const bagDataString = localStorage.getItem("bag");
+  if (bagDataString) {
+    bagData = JSON.parse(bagDataString);
+  }
+} catch (error) {
+  console.error("Error parsing bag data:", error);
+}
+
+function onLoad() {
+  const pokedexItems = document.querySelectorAll(".pokedex .item");
+
+  pokedexItems.forEach((item) => {
+    const pokemonId = parseInt(item.dataset.id, 10);
+    const isCaptured = bagData.some((pokemon) => pokemon.id === pokemonId);
+
+    if (isCaptured) {
+      item.classList.add("captured");
+    }
+  });
+}
+
+// window.addEventListener("load", onLoad);
 ---
 
 <Layout title="Pokedex">
