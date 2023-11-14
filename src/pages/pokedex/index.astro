@@ -1,36 +1,32 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import "../../../style/sass/globals.scss";
+import pokemonData from "../../lib/db/pokemons.json";
+---
 
-import pokemons from "../../lib/db/pokemons.json";
-let bagData = [];
+<Layout title="Pokedex">
+  <section class="pokedex">
+    {
+      pokemonData.map((pokemon) => (
+        <a href={`/pokedex/${pokemon.id}`} class="item" data-id={pokemon.id}>
+          <p>{pokemon.name}</p>
+          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+        </a>
+      ))
+    }
+  </section>
+</Layout>
 
-try {
-  const bagDataString = localStorage.getItem("bag");
-  if (bagDataString) {
-    bagData = JSON.parse(bagDataString);
-  }
-} catch (error) {
-  console.error("Error parsing bag data:", error);
-}
+<script>
+  import seenData from "../../lib/db/seen.json";
 
-function onLoad() {
   const pokedexItems = document.querySelectorAll(".pokedex .item");
 
-  pokedexItems.forEach((item) => {
+  pokedexItems.forEach((item: any) => {
     const pokemonId = parseInt(item.dataset.id, 10);
-    const isCaptured = bagData.some((pokemon) => pokemon.id === pokemonId);
+    const isCaptured = seenData.some((pokemon) => pokemon.id === pokemonId);
 
     if (isCaptured) {
       item.classList.add("captured");
     }
   });
-}
-
-// window.addEventListener("load", onLoad);
----
-
-<Layout title="Pokedex">
-  <h1>Pokedex</h1>
-  <p>Pokedex</p>
-</Layout>
+</script>

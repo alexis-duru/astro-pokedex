@@ -1,0 +1,31 @@
+---
+import pokemons from "../../../lib/db/pokemons.json";
+import Layout from "../../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return pokemons.map((pokemon) => {
+    return {
+      params: {
+        id: String(pokemon.id),
+      },
+      props: {
+        id: pokemon.id,
+        name: pokemon.name,
+        frontImage: pokemon.sprites && pokemon.sprites.front_default,
+      },
+    };
+  });
+}
+
+const { id, name, frontImage } = Astro.props;
+---
+
+<Layout title="Welcome to Astro.">
+  <section class="pokedex__item">
+    <div class="item">
+      <h1>{id}</h1>
+      <h1>{name}</h1>
+      <img src={frontImage} alt={name} />
+    </div>
+  </section>
+</Layout>
