@@ -5,6 +5,12 @@ import pokemons from "../lib/db/pokemons.json";
 let interval = null;
 ---
 
+<Layout title="Welcome to Astro.">
+  <section class="home">
+    <div class="random__container"></div>
+  </section>
+</Layout>
+
 <script>
   import pokemonData from "../lib/db/pokemons.json";
 
@@ -55,10 +61,68 @@ let interval = null;
       randomContainer.style.left = randomPosition.left;
     }
   }, 2000);
-</script>
 
-<Layout title="Welcome to Astro.">
-  <section class="home">
-    <div class="random__container"></div>
-  </section>
-</Layout>
+  const items = document.querySelectorAll(".random__container");
+  items.forEach((item) => {
+    // event click
+    item.addEventListener("click", () => {
+      // clearInterval(interval);
+      // const { id, name, sprites } = capturedPokemon;
+      // const uuid = Math.floor(Math.random() * 1000000);
+
+      // const pokemon = {
+      //   id: id,
+      //   uuid: uuid,
+      //   name,
+      //   sprites: capturedPokemon.sprites.front_default,
+      // };
+
+      // const homeSection = document.querySelector(".home");
+      // const div = document.createElement("div");
+      // div.classList.add("catched");
+      // div.innerHTML = `<p>${pokemon.name} attrapé !</p>`;
+      // homeSection.appendChild(div);
+
+      // const img = document.querySelector(".item");
+      // img.classList.add("catched__item");
+
+      // if (window.location.pathname === "/") {
+      //   setTimeout(() => {
+      //     const catched = document.querySelector(".catched");
+      //     if (catched) {
+      //       catched.remove();
+      //     }
+      //   }, 2000);
+      // }
+      console.log("lol");
+    });
+  });
+
+  // const { id, name, sprites } = capturedPokemon;
+  // const uuid = Math.floor(Math.random() * 1000000);
+
+  // const pokemon = {
+  //   id: id,
+  //   uuid: uuid,
+  //   name,
+  //   sprites: capturedPokemon[0].sprites.front_default,
+  // };
+
+  // const homeSection = document.querySelector(".home");
+  // const div = document.createElement("div");
+  // div.classList.add("catched");
+  // div.innerHTML = `<p>${pokemon.name} attrapé !</p>`;
+  // homeSection.appendChild(div);
+
+  // const img = document.querySelector(".item");
+  // img.classList.add("catched__item");
+
+  // if (window.location.pathname === "/") {
+  //   setTimeout(() => {
+  //     const catched = document.querySelector(".catched");
+  //     if (catched) {
+  //       catched.remove();
+  //     }
+  //   }, 2000);
+  // }
+</script>

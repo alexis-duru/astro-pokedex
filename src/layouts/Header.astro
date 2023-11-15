@@ -1,0 +1,42 @@
+---
+import bagData from "../lib/db/bag.json";
+import users from "../lib/db/user.json";
+
+const linksNavigation = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  {
+    name: "Pokedex",
+    url: "/pokedex",
+  },
+  {
+    name: "Bag",
+    url: "/bag",
+  },
+];
+---
+
+<header>
+  <nav>
+    <ul>
+      {
+        linksNavigation.map((link) => (
+          <li>
+            <a href={link.url}>{link.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const links = document.querySelectorAll("nav ul li a");
+  links.forEach((link: any) => {
+    if (link.href === window.location.href) {
+      link.classList.add("active");
+    }
+  });
+</script>

@@ -1,9 +1,35 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import "../../style/sass/globals.scss";
+import pokemons from "../../lib/db/bag.json";
 ---
 
 <Layout title="Pokedex">
-  <h1>BAG PAGE</h1>
-  <p>Bag</p>
+  <section class="bag">
+    <div class="container">
+      {
+        pokemons.length > 0 ? (
+          pokemons.map((poke) => (
+            <div class="item">
+              <p>{poke.name}</p>
+              <a href={`/pokedex/${poke.id}`}>
+                <img src={poke.image} alt={poke.name} />
+              </a>
+              <button id="btn__remove">Libérer</button>
+            </div>
+          ))
+        ) : (
+          <p>Vous n'avez pas encore de Pokémon dans votre sac</p>
+        )
+      }
+    </div>
+  </section>
 </Layout>
+
+<script>
+  const btnRemove = document.querySelectorAll("#btn__remove");
+  btnRemove.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      console.log("click");
+    });
+  });
+</script>
