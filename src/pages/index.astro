@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 import pokemons from "../lib/db/pokemons.json";
 
@@ -45,7 +46,6 @@ let interval = null;
 
     capturedPokemon = getRandomPokemon();
     const randomPosition = setRandomPosition();
-    // console.log(capturedPokemon.name);
 
     const item = document.createElement("div");
     item.classList.add("item");
@@ -54,7 +54,9 @@ let interval = null;
   `;
     document.querySelector(".random__container").appendChild(item);
 
-    const randomContainer = document.querySelector(".random__container");
+    const randomContainer = document.querySelector(
+      ".random__container"
+    ) as HTMLElement;
 
     if (randomContainer) {
       randomContainer.style.top = randomPosition.top;
@@ -64,65 +66,38 @@ let interval = null;
 
   const items = document.querySelectorAll(".random__container");
   items.forEach((item) => {
-    // event click
     item.addEventListener("click", () => {
-      // clearInterval(interval);
-      // const { id, name, sprites } = capturedPokemon;
-      // const uuid = Math.floor(Math.random() * 1000000);
+      const pokemon = {
+        id: capturedPokemon.id,
+        uuid: Math.floor(Math.random() * 1000000),
+        name: capturedPokemon.name,
+        sprites: capturedPokemon.sprites.front_default,
+      };
 
-      // const pokemon = {
-      //   id: id,
-      //   uuid: uuid,
-      //   name,
-      //   sprites: capturedPokemon.sprites.front_default,
-      // };
+      const pokemons = JSON.parse(localStorage.getItem("pokemons")) || [];
 
-      // const homeSection = document.querySelector(".home");
-      // const div = document.createElement("div");
-      // div.classList.add("catched");
-      // div.innerHTML = `<p>${pokemon.name} attrapé !</p>`;
-      // homeSection.appendChild(div);
+      pokemons.push(pokemon);
 
-      // const img = document.querySelector(".item");
-      // img.classList.add("catched__item");
+      localStorage.setItem("pokemons", JSON.stringify(pokemons));
 
-      // if (window.location.pathname === "/") {
-      //   setTimeout(() => {
-      //     const catched = document.querySelector(".catched");
-      //     if (catched) {
-      //       catched.remove();
-      //     }
-      //   }, 2000);
-      // }
+      const homeSection = document.querySelector(".home");
+      const div = document.createElement("div");
+      div.classList.add("catched");
+      div.innerHTML = `<p>${pokemon.name} attrapé !</p>`;
+      homeSection.appendChild(div);
+
+      const img = document.querySelector(".item");
+      img.classList.add("catched__item");
+
+      if (window.location.pathname === "/") {
+        setTimeout(() => {
+          const catched = document.querySelector(".catched");
+          if (catched) {
+            catched.remove();
+          }
+        }, 2000);
+      }
       console.log("lol");
     });
   });
-
-  // const { id, name, sprites } = capturedPokemon;
-  // const uuid = Math.floor(Math.random() * 1000000);
-
-  // const pokemon = {
-  //   id: id,
-  //   uuid: uuid,
-  //   name,
-  //   sprites: capturedPokemon[0].sprites.front_default,
-  // };
-
-  // const homeSection = document.querySelector(".home");
-  // const div = document.createElement("div");
-  // div.classList.add("catched");
-  // div.innerHTML = `<p>${pokemon.name} attrapé !</p>`;
-  // homeSection.appendChild(div);
-
-  // const img = document.querySelector(".item");
-  // img.classList.add("catched__item");
-
-  // if (window.location.pathname === "/") {
-  //   setTimeout(() => {
-  //     const catched = document.querySelector(".catched");
-  //     if (catched) {
-  //       catched.remove();
-  //     }
-  //   }, 2000);
-  // }
 </script>

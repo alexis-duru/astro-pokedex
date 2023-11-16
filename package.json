@@ -10,7 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^6.0.4",
     "astro": "^3.3.0",
+    "body-parser": "^1.20.2",
     "sass": "^1.69.5"
   }
 }
